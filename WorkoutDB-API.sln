@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutDB-API", "WorkoutDB-API\WorkoutDB-API.csproj", "{B7FD7591-2290-45E3-8A25-AB6DEA4B516A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkoutDataAccess", "WorkoutDataAccess\WorkoutDataAccess.csproj", "{9CB26FD6-4906-4A2E-B259-BA6851CAD34A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7FD7591-2290-45E3-8A25-AB6DEA4B516A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FD7591-2290-45E3-8A25-AB6DEA4B516A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FD7591-2290-45E3-8A25-AB6DEA4B516A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FD7591-2290-45E3-8A25-AB6DEA4B516A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB26FD6-4906-4A2E-B259-BA6851CAD34A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB26FD6-4906-4A2E-B259-BA6851CAD34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB26FD6-4906-4A2E-B259-BA6851CAD34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB26FD6-4906-4A2E-B259-BA6851CAD34A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B81B25AA-1BE1-4FAC-A9C0-51183681944A}
+	EndGlobalSection
+EndGlobal

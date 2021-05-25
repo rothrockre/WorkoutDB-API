@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkoutModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserGoals">
+          <Key>
+            <PropertyRef Name="GoalID" />
+          </Key>
+          <Property Name="GoalID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="WeightGoal" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="WorkoutID" Type="int" Nullable="false" />
+          <Property Name="Maxlbs" Type="float" Nullable="false" />
+          <Property Name="MaxKilos" Type="float" Nullable="false" />
+          <Property Name="MaxGoal" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMuscleFatigue">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Chest" Type="float" Nullable="false" />
+          <Property Name="ChestLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Calves" Type="float" Nullable="false" />
+          <Property Name="CalvesLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Hamstring" Type="float" Nullable="false" />
+          <Property Name="HamstringLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Quadriceps" Type="float" Nullable="false" />
+          <Property Name="QuadricepsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Glutes" Type="float" Nullable="false" />
+          <Property Name="GlutesLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Biceps" Type="float" Nullable="false" />
+          <Property Name="BicepsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Triceps" Type="float" Nullable="false" />
+          <Property Name="TricepsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Forearms" Type="float" Nullable="false" />
+          <Property Name="ForearmsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Trapezious" Type="float" Nullable="false" />
+          <Property Name="TrapeziousLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LatissimusDorsi" Type="float" Nullable="false" />
+          <Property Name="LatissismusDorsiLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="HipAbductors" Type="float" Nullable="false" />
+          <Property Name="HipAbductorsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="HipAdductors" Type="float" Nullable="false" />
+          <Property Name="HipAdductorsLastUseDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="lastUpdate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPerms">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaidUser" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LastUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Height" Type="float" Nullable="false" />
+          <Property Name="Weight" Type="float" Nullable="false" />
+          <Property Name="Lbs/Kilos" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWorkouts">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numSets" Type="float" Nullable="false" />
+          <Property Name="numReps" Type="float" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="WorkoutID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MuscleGroup" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MuscleStrainMultiplier" Type="float" />
+          <Property Name="WorkoutID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WorkoutModelStoreContainer">
+          <EntitySet Name="UserGoals" EntityType="Self.UserGoals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMax" EntityType="Self.UserMax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMuscleFatigue" EntityType="Self.UserMuscleFatigue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPerms" EntityType="Self.UserPerms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWorkouts" EntityType="Self.UserWorkouts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkoutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserGoal">
+          <Key>
+            <PropertyRef Name="GoalID" />
+          </Key>
+          <Property Name="GoalID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="WeightGoal" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="WorkoutID" Type="Int32" Nullable="false" />
+          <Property Name="Maxlbs" Type="Double" Nullable="false" />
+          <Property Name="MaxKilos" Type="Double" Nullable="false" />
+          <Property Name="MaxGoal" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMuscleFatigue">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Chest" Type="Double" Nullable="false" />
+          <Property Name="ChestLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Calves" Type="Double" Nullable="false" />
+          <Property Name="CalvesLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Hamstring" Type="Double" Nullable="false" />
+          <Property Name="HamstringLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Quadriceps" Type="Double" Nullable="false" />
+          <Property Name="QuadricepsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Glutes" Type="Double" Nullable="false" />
+          <Property Name="GlutesLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Biceps" Type="Double" Nullable="false" />
+          <Property Name="BicepsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Triceps" Type="Double" Nullable="false" />
+          <Property Name="TricepsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Forearms" Type="Double" Nullable="false" />
+          <Property Name="ForearmsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Trapezious" Type="Double" Nullable="false" />
+          <Property Name="TrapeziousLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LatissimusDorsi" Type="Double" Nullable="false" />
+          <Property Name="LatissismusDorsiLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="HipAbductors" Type="Double" Nullable="false" />
+          <Property Name="HipAbductorsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="HipAdductors" Type="Double" Nullable="false" />
+          <Property Name="HipAdductorsLastUseDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="lastUpdate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserPerm">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaidUser" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LastUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Height" Type="Double" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <Property Name="Lbs_Kilos" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWorkout">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numSets" Type="Double" Nullable="false" />
+          <Property Name="numReps" Type="Double" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="WorkoutID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="WorkoutID" />
+          </Key>
+          <Property Name="WorkoutName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MuscleGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MuscleStrainMultiplier" Type="Double" />
+          <Property Name="WorkoutID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WorkoutEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserGoals" EntityType="Self.UserGoal" />
+          <EntitySet Name="UserMaxes" EntityType="Self.UserMax" />
+          <EntitySet Name="UserMuscleFatigues" EntityType="Self.UserMuscleFatigue" />
+          <EntitySet Name="UserPerms" EntityType="Self.UserPerm" />
+          <EntitySet Name="UserWorkouts" EntityType="Self.UserWorkout" />
+          <EntitySet Name="Workouts" EntityType="Self.Workout" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkoutModelStoreContainer" CdmEntityContainer="WorkoutEntities">
+          <EntitySetMapping Name="UserGoals">
+            <EntityTypeMapping TypeName="WorkoutModel.UserGoal">
+              <MappingFragment StoreEntitySet="UserGoals">
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="WeightGoal" ColumnName="WeightGoal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMaxes">
+            <EntityTypeMapping TypeName="WorkoutModel.UserMax">
+              <MappingFragment StoreEntitySet="UserMax">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="WorkoutID" ColumnName="WorkoutID" />
+                <ScalarProperty Name="Maxlbs" ColumnName="Maxlbs" />
+                <ScalarProperty Name="MaxKilos" ColumnName="MaxKilos" />
+                <ScalarProperty Name="MaxGoal" ColumnName="MaxGoal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMuscleFatigues">
+            <EntityTypeMapping TypeName="WorkoutModel.UserMuscleFatigue">
+              <MappingFragment StoreEntitySet="UserMuscleFatigue">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Chest" ColumnName="Chest" />
+                <ScalarProperty Name="ChestLastUseDate" ColumnName="ChestLastUseDate" />
+                <ScalarProperty Name="Calves" ColumnName="Calves" />
+                <ScalarProperty Name="CalvesLastUseDate" ColumnName="CalvesLastUseDate" />
+                <ScalarProperty Name="Hamstring" ColumnName="Hamstring" />
+                <ScalarProperty Name="HamstringLastUseDate" ColumnName="HamstringLastUseDate" />
+                <ScalarProperty Name="Quadriceps" ColumnName="Quadriceps" />
+                <ScalarProperty Name="QuadricepsLastUseDate" ColumnName="QuadricepsLastUseDate" />
+                <ScalarProperty Name="Glutes" ColumnName="Glutes" />
+                <ScalarProperty Name="GlutesLastUseDate" ColumnName="GlutesLastUseDate" />
+                <ScalarProperty Name="Biceps" ColumnName="Biceps" />
+                <ScalarProperty Name="BicepsLastUseDate" ColumnName="BicepsLastUseDate" />
+                <ScalarProperty Name="Triceps" ColumnName="Triceps" />
+                <ScalarProperty Name="TricepsLastUseDate" ColumnName="TricepsLastUseDate" />
+                <ScalarProperty Name="Forearms" ColumnName="Forearms" />
+                <ScalarProperty Name="ForearmsLastUseDate" ColumnName="ForearmsLastUseDate" />
+                <ScalarProperty Name="Trapezious" ColumnName="Trapezious" />
+                <ScalarProperty Name="TrapeziousLastUseDate" ColumnName="TrapeziousLastUseDate" />
+                <ScalarProperty Name="LatissimusDorsi" ColumnName="LatissimusDorsi" />
+                <ScalarProperty Name="LatissismusDorsiLastUseDate" ColumnName="LatissismusDorsiLastUseDate" />
+                <ScalarProperty Name="HipAbductors" ColumnName="HipAbductors" />
+                <ScalarProperty Name="HipAbductorsLastUseDate" ColumnName="HipAbductorsLastUseDate" />
+                <ScalarProperty Name="HipAdductors" ColumnName="HipAdductors" />
+                <ScalarProperty Name="HipAdductorsLastUseDate" ColumnName="HipAdductorsLastUseDate" />
+                <ScalarProperty Name="lastUpdate" ColumnName="lastUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPerms">
+            <EntityTypeMapping TypeName="WorkoutModel.UserPerm">
+              <MappingFragment StoreEntitySet="UserPerms">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PaidUser" ColumnName="PaidUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastUser" ColumnName="LastUser" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Lbs_Kilos" ColumnName="Lbs/Kilos" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWorkouts">
+            <EntityTypeMapping TypeName="WorkoutModel.UserWorkout">
+              <MappingFragment StoreEntitySet="UserWorkouts">
+                <ScalarProperty Name="WorkoutName" ColumnName="WorkoutName" />
+                <ScalarProperty Name="numSets" ColumnName="numSets" />
+                <ScalarProperty Name="numReps" ColumnName="numReps" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="WorkoutID" ColumnName="WorkoutID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workouts">
+            <EntityTypeMapping TypeName="WorkoutModel.Workout">
+              <MappingFragment StoreEntitySet="Workout">
+                <ScalarProperty Name="WorkoutName" ColumnName="WorkoutName" />
+                <ScalarProperty Name="MuscleGroup" ColumnName="MuscleGroup" />
+                <ScalarProperty Name="MuscleStrainMultiplier" ColumnName="MuscleStrainMultiplier" />
+                <ScalarProperty Name="WorkoutID" ColumnName="WorkoutID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
